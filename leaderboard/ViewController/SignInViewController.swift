@@ -23,7 +23,14 @@ class SignInViewController: UIViewController {
         // TODO: Create User
         // https://firebase.google.com/docs/auth/ios/start#sign_up_new_users
         // If successfull, save to Local Storage TIP: Use AppSession > saveUserAccount
-            // Go to Main Screen (see code in the function below)
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+                if let user = user {
+                    try! AppSession.shared.saveUserAccount(email: email, password: password)
+                    self.goToMainScreen()
+                }
+            }
+        }
     }
     
     private func goToMainScreen() {

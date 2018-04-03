@@ -19,6 +19,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var user: User?
     var players = [Player]()
     
+    
     let k_POINTS_INCREASE = 1
     @IBOutlet weak var addPointsButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -30,12 +31,26 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func getPlayers() {
-        // TODO: Get players from Firestore
         // https://firebase.google.com/docs/firestore/query-data/get-data
+        // Get players from Firestore
+        let db = Firestore.firestore()
+        db.collection(k_COLLECTION_PLAYERS).getDocuments { (snapshot, error) in
+            self.players = [Player]()
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                for document in snapshot!.documents {
+                    var player = try! Player.fromDictionary(document.data())
+                    if let player = player {
+                        self.players.append(player)
+                    }
+                }
+            }
+            self.tableView.reloadData()
+        }
         // TIP: You can use the helper methods fromDictionary() and asDictionary() on any Player object to get it in the format accepted by Firestore
         // players = ?
         // Refresh tableview after we got our players
-        tableView.reloadData()
     }
     
     
@@ -54,15 +69,45 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Get the current cell to display
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderboardCell") as! LeaderboardCell
         // Set Username
-        cell.usernameLabel.text = "Username" // TODO
+        cell.usernameLabel.text = player.username
         // Set Points
-        cell.pointsLabel.text = String(format: "%d Points", 5) // TODO
+        cell.pointsLabel.text = String(format: "%d Points", player.points ?? 0) // TODO player.points ?? 0
         return cell
     }
     
     @IBAction func didTapAddPoints(_ sender: UIButton) {
         // TODO: Update user points on Firestore
-        // https://firebase.google.com/docs/firestore/manage-data/add-data
+        if let userId = user?.email {
+            // Get our player document
+            let db = Firestore.firestore()
+            let userDocRef = db.collection(k_COLLECTION_PLAYERS).document(userId)
+            userDocRef.getDocument(completion: { (document, error) in
+                if let error = error {
+                    print("Error getting document: \(error)")
+                } else {
+                    // Get the document's data
+                    if let data = document?.data() {
+                        // Convert to our Swift Player object
+                        let playerMe = try! Player.fromDictionary(data)
+                        if let playerMe = playerMe {
+                            // We have our player, add 1 points
+                            print("It's me! \(playerMe.username)")
+                            let newPoints = (playerMe.points ?? 0) + 1
+                            // Save new points
+                            userDocRef.updateData(["points": newPoints])
+                        }
+                    } else {
+                        // Create new document
+                        userDocRef.setData([
+                            "username": userId,
+                            "points": 1
+                            ])
+                    }
+                    // Refresh
+                    self.getPlayers()
+                }
+            })
+        }
         // TODO: Refresh data
     }
     
