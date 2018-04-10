@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		81AAEF7E3FFCC923EB942C5B /* Pods-leaderboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leaderboard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-leaderboard/Pods-leaderboard.debug.xcconfig"; sourceTree = "<group>"; };
 		8A0308E2207CCD160062B659 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8A0308E4207CCF780062B659 /* leaderboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = leaderboard.entitlements; sourceTree = "<group>"; };
 		A0147E1356C0BA2C1B16A3A3 /* Pods_leaderboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_leaderboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC769DC4EB2D35CA25257B81 /* Pods-leaderboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leaderboard.release.xcconfig"; path = "Pods/Target Support Files/Pods-leaderboard/Pods-leaderboard.release.xcconfig"; sourceTree = "<group>"; };
 		FA53DBEB20738ACE00C4F8E6 /* leaderboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leaderboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +93,7 @@
 		FA53DBED20738ACE00C4F8E6 /* leaderboard */ = {
 			isa = PBXGroup;
 			children = (
+				8A0308E4207CCF780062B659 /* leaderboard.entitlements */,
 				FAEE422B2073A1280067A310 /* Model */,
 				FAEE4223207392650067A310 /* Utils */,
 				FAEE421E20738C6F0067A310 /* GoogleService-Info.plist */,
@@ -177,6 +179,11 @@
 					FA53DBEA20738ACE00C4F8E6 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -436,6 +443,7 @@
 			baseConfigurationReference = 81AAEF7E3FFCC923EB942C5B /* Pods-leaderboard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = leaderboard/leaderboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8N49L3NZK;
 				INFOPLIST_FILE = leaderboard/Info.plist;
@@ -452,6 +460,7 @@
 			baseConfigurationReference = BC769DC4EB2D35CA25257B81 /* Pods-leaderboard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = leaderboard/leaderboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8N49L3NZK;
 				INFOPLIST_FILE = leaderboard/Info.plist;

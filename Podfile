@@ -10,6 +10,7 @@ target 'leaderboard' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Database'
+  pod 'Firebase/Messaging'
   pod 'Locksmith'
 
 end
