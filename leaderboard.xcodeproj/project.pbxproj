@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A0308E3207CCD160062B659 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0308E2207CCD160062B659 /* SettingsViewController.swift */; };
 		EEA367EFC207AD7B283A2206 /* Pods_leaderboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0147E1356C0BA2C1B16A3A3 /* Pods_leaderboard.framework */; };
 		FA53DBEF20738ACE00C4F8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53DBEE20738ACE00C4F8E6 /* AppDelegate.swift */; };
 		FA53DBF120738ACE00C4F8E6 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53DBF020738ACE00C4F8E6 /* SignInViewController.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		81AAEF7E3FFCC923EB942C5B /* Pods-leaderboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leaderboard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-leaderboard/Pods-leaderboard.debug.xcconfig"; sourceTree = "<group>"; };
+		8A0308E2207CCD160062B659 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A0147E1356C0BA2C1B16A3A3 /* Pods_leaderboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_leaderboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC769DC4EB2D35CA25257B81 /* Pods-leaderboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leaderboard.release.xcconfig"; path = "Pods/Target Support Files/Pods-leaderboard/Pods-leaderboard.release.xcconfig"; sourceTree = "<group>"; };
 		FA53DBEB20738ACE00C4F8E6 /* leaderboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leaderboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +111,7 @@
 				FAEE422620739DEE0067A310 /* Cell */,
 				FA53DBF020738ACE00C4F8E6 /* SignInViewController.swift */,
 				FAEE422020738EF00067A310 /* MainViewController.swift */,
+				8A0308E2207CCD160062B659 /* SettingsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				FAEE422D2073A1360067A310 /* Player.swift in Sources */,
 				FA53DBEF20738ACE00C4F8E6 /* AppDelegate.swift in Sources */,
 				FAEE422A2073A0F00067A310 /* Encodable+Dict.swift in Sources */,
+				8A0308E3207CCD160062B659 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

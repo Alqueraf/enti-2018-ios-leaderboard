@@ -1,4 +1,4 @@
-//
+ //
 //  ViewController.swift
 //  leaderboard
 //
@@ -35,7 +35,7 @@ class SignInViewController: UIViewController {
     
     private func goToMainScreen() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+        let viewController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
