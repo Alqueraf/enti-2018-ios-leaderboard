@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 let k_MASTER_VOLUME = "MASTER_VOLUME"
 
@@ -26,5 +27,28 @@ class SettingsViewController: UIViewController {
         UserDefaults.standard.set(sender.value, forKey: k_MASTER_VOLUME)
     
     }
+    
+
+    @IBAction func scheduleNotificationPressed(_ sender: Any) {
+        let content = UNMutableNotificationContent()
+        content.title = NSString.localizedUserNotificationString(forKey: "Hola Mundo!", arguments: nil)
+        content.body = NSString.localizedUserNotificationString(forKey: "Esta es una prueba de notificación local!",
+                                                                arguments: nil)
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 30, repeats: false)
+        
+        content.categoryIdentifier = "TIMER_EXPIRED";
+        
+        // Create the request object.
+        let request = UNNotificationRequest(identifier: "TestNotification", content: content, trigger: trigger)
+        
+        let center = UNUserNotificationCenter.current()
+        center.add(request) { (error : Error?) in
+            if let theError = error {
+                print(theError.localizedDescription)
+            }
+        }
+    }
+    
     
 }
